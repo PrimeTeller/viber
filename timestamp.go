@@ -20,7 +20,7 @@ func (t *Timestamp) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON converts unix timestamp to golang time
 func (t *Timestamp) UnmarshalJSON(b []byte) error {
-	ts, err := strconv.Atoi(string(b))
+	ts, err := strconv.ParseInt(string(b), 10, 64)
 	if err != nil {
 		return err
 	}
