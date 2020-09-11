@@ -27,6 +27,7 @@ type Message interface {
 	SetReceiver(r string)
 	SetFrom(from string)
 	SetKeyboard(k *Keyboard)
+	SetMinAPIVersion(v uint)
 }
 
 // TextMessage for Viber
@@ -65,6 +66,14 @@ type VideoMessage struct {
 	Thumbnail string `json:"thumbnail,omitempty"`
 	Size      uint   `json:"size"`
 	Duration  uint   `json:"duration,omitempty"`
+}
+
+// ContactMessage structure
+type ContactMessage struct {
+	TextMessage
+	Contact struct {
+		PhoneNumber string `json:"phone_number"`
+	}
 }
 
 // MessageType for viber messaging
@@ -181,4 +190,9 @@ func (m *TextMessage) SetFrom(from string) {
 // SetKeyboard for text message
 func (m *TextMessage) SetKeyboard(k *Keyboard) {
 	m.Keyboars = k
+}
+
+// SetMinAPIVersion for text message
+func (m *TextMessage) SetMinAPIVersion(v uint) {
+	m.MinAPIVersion = v
 }
