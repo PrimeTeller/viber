@@ -76,6 +76,16 @@ type ContactMessage struct {
 	}
 }
 
+// LocationMessage structure
+type LocationMessage struct {
+	TextMessage
+	Location struct {
+		Lat     float32 `json:"lat"`
+		Lon     float32 `json:"lon"`
+		Address string  `json:"address"`
+	}
+}
+
 // MessageType for viber messaging
 type MessageType string
 
